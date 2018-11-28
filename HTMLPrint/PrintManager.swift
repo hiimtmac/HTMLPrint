@@ -9,10 +9,10 @@
 import UIKit
 
 public class PrintManager {
-    public var paperSize: PageSize = .letter
-    public var paperOrientation: PageOrientation = .portrait
-    public var dpi: Dpi = .dpi72
-    public var insetX: CGFloat = 40
+    public var paperSize: PageSize
+    public var paperOrientation: PageOrientation
+    public var dpi: Dpi
+    public var insetX: CGFloat
     
     internal var html: String
     
@@ -20,13 +20,17 @@ public class PrintManager {
      Creates a print manager from an html string.
      - parameter html: The rendered html string.
      */
-    public init(html: String) {
+    public init(html: String, size: PageSize = .letter, orientation: PageOrientation = .portrait, dpi: Dpi = .dpi72, insetX: CGFloat = 40) {
         self.html = html
+        self.paperSize = size
+        self.paperOrientation = orientation
+        self.dpi = dpi
+        self.insetX = insetX
     }
     
     private var pageSize: CGSize {
-        let shorter = paperSize.dimShort * dpi.rawValue
-        let longer = paperSize.dimLong * dpi.rawValue
+        let shorter = paperSize.dimShort * 72//dpi.rawValue
+        let longer = paperSize.dimLong * 72//dpi.rawValue
         
         switch paperOrientation {
         case .portrait: return CGSize(width: shorter, height: longer)

@@ -14,29 +14,32 @@ You can use the default print settings, or tweak it to your render needs with so
 ### Making a Print Manager
 
 ```swift
-import CPPrintManager
+import HTMLPrint
 
 let html = <html><body><p>Hello, World!</p></body></html>
-let pManager = CPPrintManager(html: html)
+let printManager = PrintManager(html: html, size: .letter, orientation: .landscape, dpi: .dpi300)
 // configure print manager settings -> Insets, PaperSize, PaperOrientation, DPI
-pManager.paperOrientation = .landscape
 ```
 
 ### Making a Print Renderer
 
 ```swift
-let renderer = CPPrintRenderer(offsetX: printManager.insetX)
+let renderer = PrintRenderer(offsetX: printManager.insetX)
+renderer.tintShade = UIColor.cyan
+renderer.showsFooterLine = true
 // configure print render settings -> TintShade, BufferHeight, HeaderLine, FooterLine, MarginText
-
 ```
 
 ### Create Render Attributes
 
 ```swift
-let attributes: [String: Any] = [NSFontAttributeName: UIFont.systemFont(ofSize: 8), NSForegroundColorAttributeName: UIColor.orange]
+let attributes: [NSAttributedString.Key: Any] = [
+    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 8),
+    NSAttributedString.Key.foregroundColor: UIColor.orange
+]
 
-let leftFoot = CPMarginText(text: "Left Foot", vertType: .footer, horzType: .left, baseType: .baseline)
-let rightHead = CPMarginText(text: "Right Head", vertType: .header, horzType: .right, baseType: .center)
+let leftFoot = MarginText(text: "Left Foot", verticalPosition: .footer, horizontalPosition: .left, baselinePosition: .baseline)
+let rightHead = MarginText(text: "Right Head", verticalPosition: .header, horizontalPosition: .right, baselinePosition: .center)
 rightHead.attributes = attributes
 renderer.marginTexts = [leftFoot, rightHead]
 ```

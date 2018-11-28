@@ -17,9 +17,9 @@ public class MarginText {
     ]
     
     public let textContent: String
-    public let verticalType: VerticalType
-    public let horizontalType: HorizontalType
-    public let baseAlignment: BaseLine
+    public let verticalPosition: VerticalPosition
+    public let horizontalPosition: HorizontalPosition
+    public let baselinePosition: BaselinePosition
     
     /**
      Returns an instance of a `MarginText`
@@ -32,11 +32,11 @@ public class MarginText {
         - horzType: Location of the header/footer horizontally
         - baseType: Declares if text hugs baseline of header/footer, or is centered
      */
-    public init(text: String, vertType: VerticalType, horzType: HorizontalType, baseType: BaseLine) {
+    public init(text: String, verticalPosition: VerticalPosition, horizontalPosition: HorizontalPosition, baselinePosition: BaselinePosition) {
         self.textContent = text
-        self.verticalType = vertType
-        self.horizontalType = horzType
-        self.baseAlignment = baseType
+        self.verticalPosition = verticalPosition
+        self.horizontalPosition = horizontalPosition
+        self.baselinePosition = baselinePosition
     }
     
     var attributedString: NSAttributedString {
@@ -51,14 +51,14 @@ public class MarginText {
     }
     
     func insertPointY(rect: CGRect, buffer: CGFloat, hasLine: Bool) -> CGFloat {
-        switch verticalType {
+        switch verticalPosition {
         case .header:
-            switch baseAlignment {
+            switch baselinePosition {
             case .baseline: return rect.maxY - textSize.height - buffer - (hasLine ? 2 : 0)
             case .center: return rect.midY - textSize.height/2 - (hasLine ? buffer/2 : 0)
             }
         case .footer:
-            switch baseAlignment {
+            switch baselinePosition {
             case .baseline: return rect.minY + buffer + (hasLine ? 2 : 0)
             case .center: return rect.midY - textSize.height/2 + (hasLine ? buffer/2 : 0)
             }
@@ -66,7 +66,7 @@ public class MarginText {
     }
     
     func insertPointX(rect: CGRect, offsetX: CGFloat) -> CGFloat {
-        switch horizontalType {
+        switch horizontalPosition {
         case .left: return offsetX
         case .center: return rect.width/2 - textSize.width/2
         case .right: return rect.width - offsetX - textSize.width
@@ -80,18 +80,18 @@ public class MarginText {
     }
 }
 
-public enum VerticalType {
+public enum VerticalPosition {
     case header
     case footer
 }
 
-public enum HorizontalType {
+public enum HorizontalPosition {
     case left
     case center
     case right
 }
 
-public enum BaseLine {
+public enum BaselinePosition {
     case baseline
     case center
 }

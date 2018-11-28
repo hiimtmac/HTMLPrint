@@ -14,9 +14,9 @@ public class PrintRenderer: UIPrintPageRenderer {
     /// Height between header/footer and content
     public var bufferHeight: CGFloat = 5
     /// Line should be rendered between header and content
-    public var headerLine: Bool = false
+    public var showsHeaderLine: Bool = false
     /// Line should be rendered between footer and content
-    public var footerLine: Bool = false
+    public var showsFooterLine: Bool = false
     /// Text to be rendered in header/footer areas
     public var marginTexts: [MarginText]?
     
@@ -38,23 +38,23 @@ public class PrintRenderer: UIPrintPageRenderer {
     }
     
     override public func drawHeaderForPage(at pageIndex: Int, in headerRect: CGRect) {
-        if headerLine {
+        if showsHeaderLine {
             drawHorizontalLine(at: headerRect.maxY - bufferHeight, width: headerRect.width)
         }
         
-        marginTexts?.filter({$0.verticalType == .header}).forEach { (headerText) in
-            let insertPoint = headerText.insertPoint(rect: headerRect, offsetX: offsetX, buffer: bufferHeight, hasLine: headerLine)
+        marginTexts?.filter({$0.verticalPosition == .header}).forEach { (headerText) in
+            let insertPoint = headerText.insertPoint(rect: headerRect, offsetX: offsetX, buffer: bufferHeight, hasLine: showsHeaderLine)
             headerText.attributedString.draw(at: insertPoint)
         }
     }
     
     override public func drawFooterForPage(at pageIndex: Int, in footerRect: CGRect) {
-        if footerLine {
+        if showsFooterLine {
             drawHorizontalLine(at: footerRect.minY + bufferHeight, width: footerRect.width)
         }
         
-        marginTexts?.filter({$0.verticalType == .footer}).forEach { (footerText) in
-            let insertPoint = footerText.insertPoint(rect: footerRect, offsetX: offsetX, buffer: bufferHeight, hasLine: footerLine)
+        marginTexts?.filter({$0.verticalPosition == .footer}).forEach { (footerText) in
+            let insertPoint = footerText.insertPoint(rect: footerRect, offsetX: offsetX, buffer: bufferHeight, hasLine: showsFooterLine)
             footerText.attributedString.draw(at: insertPoint)
         }
     }
