@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
-    s.name                    = "TMEmailHelpers"
-    s.version                 = "0.0.4"
+    s.name                    = "HTMLPrint"
+    s.version                 = "0.0.1"
     s.summary                 = "Email creation helpers"
 
     s.homepage                = "http://github.com/hiimtmac/HTMLPrint"
@@ -15,7 +15,5 @@ Pod::Spec.new do |s|
     s.source                  = { :git => "https://github.com/hiimtmac/HTMLPrint", :tag => s.version }
     s.source_files            = "HTMLPrint/**/*.swift"
     s.requires_arc            = true
-
-    s.dependency 'SwiftyMimes'
 
 end

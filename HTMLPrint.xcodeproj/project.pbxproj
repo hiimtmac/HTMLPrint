@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D78B6D2F21AF1B83002AC46D /* HTMLPrint.h in Headers */ = {isa = PBXBuildFile; fileRef = D78B6D2D21AF1B83002AC46D /* HTMLPrint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D78B6D3C21AF1CAF002AC46D /* PageProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78B6D3821AF1CAF002AC46D /* PageProperties.swift */; };
+		D78B6D3D21AF1CAF002AC46D /* PrintRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78B6D3921AF1CAF002AC46D /* PrintRenderer.swift */; };
+		D78B6D3E21AF1CAF002AC46D /* MarginText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78B6D3A21AF1CAF002AC46D /* MarginText.swift */; };
+		D78B6D3F21AF1CAF002AC46D /* PrintManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78B6D3B21AF1CAF002AC46D /* PrintManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,6 +21,10 @@
 		D78B6D3521AF1BE3002AC46D /* HTMLPrint.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = HTMLPrint.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D78B6D3621AF1BE3002AC46D /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		D78B6D3721AF1BE3002AC46D /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		D78B6D3821AF1CAF002AC46D /* PageProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageProperties.swift; sourceTree = "<group>"; };
+		D78B6D3921AF1CAF002AC46D /* PrintRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintRenderer.swift; sourceTree = "<group>"; };
+		D78B6D3A21AF1CAF002AC46D /* MarginText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarginText.swift; sourceTree = "<group>"; };
+		D78B6D3B21AF1CAF002AC46D /* PrintManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				D78B6D2D21AF1B83002AC46D /* HTMLPrint.h */,
+				D78B6D3A21AF1CAF002AC46D /* MarginText.swift */,
+				D78B6D3821AF1CAF002AC46D /* PageProperties.swift */,
+				D78B6D3B21AF1CAF002AC46D /* PrintManager.swift */,
+				D78B6D3921AF1CAF002AC46D /* PrintRenderer.swift */,
 				D78B6D2E21AF1B83002AC46D /* Info.plist */,
 			);
 			path = HTMLPrint;
@@ -101,6 +113,7 @@
 				TargetAttributes = {
 					D78B6D2921AF1B83002AC46D = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -136,6 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D78B6D3E21AF1CAF002AC46D /* MarginText.swift in Sources */,
+				D78B6D3C21AF1CAF002AC46D /* PageProperties.swift in Sources */,
+				D78B6D3F21AF1CAF002AC46D /* PrintManager.swift in Sources */,
+				D78B6D3D21AF1CAF002AC46D /* PrintRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +284,7 @@
 		D78B6D3321AF1B83002AC46D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -284,6 +302,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hiimtmac.HTMLPrint;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -292,6 +311,7 @@
 		D78B6D3421AF1B83002AC46D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
