@@ -14,14 +14,7 @@ public class PrintManager {
     public var dpi: Dpi
     public var insetX: CGFloat
     
-    internal var html: String
-    
-    /**
-     Creates a print manager from an html string.
-     - parameter html: The rendered html string.
-     */
-    public init(html: String, size: PageSize = .letter, orientation: PageOrientation = .portrait, dpi: Dpi = .dpi72, insetX: CGFloat = 40) {
-        self.html = html
+    public init(size: PageSize = .letter, orientation: PageOrientation = .portrait, dpi: Dpi = .dpi72, insetX: CGFloat = 40) {
         self.paperSize = size
         self.paperOrientation = orientation
         self.dpi = dpi
@@ -47,15 +40,7 @@ public class PrintManager {
         return page.insetBy(dx: insetX, dy: 0)
     }
     
-    /**
-     Renders pdf data with provided renderer
-     
-     - parameter renderer: an instance of `PrintRenderer`
-     - returns: PDF data as type `Data`
-     - Todo: fix 300 vs 72 dpi issue
-     */
-    public func getPDFData(renderer: PrintRenderer) -> Data {
-        let formatter = UIMarkupTextPrintFormatter(markupText: html)
+    public func getPDFData(renderer: PrintRenderer, formatter: UIPrintFormatter) -> Data {
         renderer.addPrintFormatter(formatter, startingAtPageAt: 0)
         
         renderer.setValue(NSValue(cgRect: page), forKey: "paperRect")
