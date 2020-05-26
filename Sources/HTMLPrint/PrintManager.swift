@@ -1,11 +1,3 @@
-//
-//  PrintManager.swift
-//  PrintManager
-//
-//  Created by Taylor McIntyre on 2017-07-20.
-//  Copyright © 2017 hiimtmac All rights reserved.
-//
-
 import UIKit
 
 public class PrintManager {

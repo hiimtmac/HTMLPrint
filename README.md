@@ -1,8 +1,5 @@
 # HTMLPrint
 
-[![Platform](https://img.shields.io/badge/platform-iOS-blue.svg?style=flat)](https://developer.apple.com/swift)
-[![Swift Version](https://img.shields.io/badge/swift4-compatible-4BC51D.svg?style=flat)](https://developer.apple.com/swift)
-
 A print renderer for Swift to ease HTML documents to be converted into pdfs.
 
 It's usually difficult to setup a UIPrintPageRenderer and UIMarkupTextPrintFormatter to render html to pdf while respecting the differences html layout has to printed/paged media.
